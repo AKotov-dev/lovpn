@@ -1,0 +1,49 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: tmainform.caption
+msgid "MainForm"
+msgstr ""
+
+#: tmainform.dirbtn.caption
+msgid "..."
+msgstr ""
+
+#: tmainform.dirbtn.hint
+msgid "Specify the download directory..."
+msgstr "Укажите каталог загрузки..."
+
+#: tmainform.startbtn.caption
+msgid "Start"
+msgstr "Старт"
+
+#: tmainform.statictext1.caption
+msgid "License: GPLv3   Author: alex_q_2000 (C) 2023   URL: https://linuxforum.ru"
+msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2023   URL: https://linuxforum.ru"
+
+#: tmainform.stopbtn.caption
+msgid "Stop"
+msgstr "Стоп"
+
+#: unit1.sdirectorynotexists
+msgid "Download directory not found!"
+msgstr "Каталог загрузки не найден!"
+
+#: unit1.sdownloadcompleted
+msgid "Download completed"
+msgstr "Загрузка завершена"
+
+#: unit1.sloadingconfig
+msgid "Loading *.ovpn configurations. Please, wait (~30-60 sec)..."
+msgstr "Загрузка конфигураций *.ovpn. Пожалуйста, ждите (~30-60 сек)..."

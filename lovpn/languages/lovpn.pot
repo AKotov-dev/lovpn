@@ -1,0 +1,39 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tmainform.caption
+msgid "MainForm"
+msgstr ""
+
+#: tmainform.dirbtn.caption
+msgid "..."
+msgstr ""
+
+#: tmainform.dirbtn.hint
+msgid "Specify the download directory..."
+msgstr ""
+
+#: tmainform.startbtn.caption
+msgid "Start"
+msgstr ""
+
+#: tmainform.statictext1.caption
+msgid "License: GPLv3   Author: alex_q_2000 (C) 2023   URL: https://linuxforum.ru"
+msgstr ""
+
+#: tmainform.stopbtn.caption
+msgid "Stop"
+msgstr ""
+
+#: unit1.sdirectorynotexists
+msgid "Download directory not found!"
+msgstr ""
+
+#: unit1.sdownloadcompleted
+msgid "Download completed"
+msgstr ""
+
+#: unit1.sloadingconfig
+msgid "Loading *.ovpn configurations. Please, wait (~30-60 sec)..."
+msgstr ""
+

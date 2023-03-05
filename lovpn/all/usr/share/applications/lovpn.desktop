@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lovpn
+Comment=OpenVPN Configuration Loader
+Comment[ru]=Загрузчик конфигураций OpenVPN
+Icon=lovpn
+Exec=/usr/share/lovpn/lovpn
+Type=Application
+Categories=System;
+Terminal=false

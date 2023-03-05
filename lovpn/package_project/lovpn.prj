@@ -1,0 +1,70 @@
+[NAME]
+name=lovpn
+
+[VERSION]
+version=0.1
+
+[RELEASE]
+release=0.mrx9
+
+[GROUP]
+group=Networking/WWW
+
+[DESCRIPTION]
+0=OpenVPN Configuration Loader
+1=---
+2=More information: /usr/share/doc/package_name/repack.txt
+
+[MAINTAINER]
+maintainer=Alex Kotov
+
+[VENDOR]
+vendor=alex_q_2000 (C) 2023
+
+[SUMMARY]
+summary=OpenVPN Configuration Loader
+
+[URLCOPY]
+urlcopy=11
+
+[LICENSE]
+license=GPLv3
+
+[DEPS]
+deps=curl
+
+[META]
+meta=0
+
+[NOARCH]
+noarch=0
+
+[SIGN]
+sign=0
+
+[DEB]
+deb=1
+
+[FILES]
+0=/usr/share/lovpn/
+1=/usr/share/doc/lovpn/
+2=/usr/share/icons/lovpn.png
+3=/usr/share/applications/lovpn.desktop
+
+[URL32]
+url32=11
+
+[URL64]
+url64=
+
+[PROGRAMNAME]
+programname=Lovpn
+
+[DEVTOOL]
+devtool=Lazarus
+
+[TOOLVERSION]
+toolversion=2.2.4
+
+[INFO]
+0=v0.1 - Initial release
