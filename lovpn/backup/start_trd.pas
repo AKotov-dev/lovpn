@@ -47,8 +47,10 @@ begin
 
     ExProcess.Parameters.Add(
       '> ./start; s=$(curl -s $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8vZnJlZXZwbl9vcGVudnBuLnBocD9sYW5ndWFnZT1lbg==" | '
-      + 'base64 -d) | grep href= | cut -d"\"" -f6 | grep "^/"); rm -f ./*.ovpn; for i in ${s[@]}; do [ ! -f start ] '
-      + '&& break || curl -O $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8=" | base64 -d)$i; done');
+      + 'base64 -d) | grep href= | cut -d"\"" -f6 | grep "^/"); rm -f ./*.ovpn; for i in ${s[@]}; do [ ! -f ./start ] '
+      + '&& break || curl -O $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8=" | base64 -d)$i; done; rm -f ./start; '
+      + '[[ $(find . -name "*.ovpn") ]] || exit 0; for f in ./*.ovpn; do sed -i "/Downloaded\|^$/d" $f; done; '
+      + 'for f in ./*.ovpn; do sed -i $"s/[^[:print:]\t]//g" $f; done');
 
     ExProcess.Options := [poUsePipes, poStderrToOutPut];
 
@@ -93,7 +95,7 @@ procedure StartRestore.StopProgress;
 begin
   with MainForm do
   begin
-    LogMemo.Lines.Append('---');
+    LogMemo.Lines.Append('');
     LogMemo.Lines.Append(SDownloadCompleted);
     Application.ProcessMessages;
     ProgressBar1.Style := pbstNormal;

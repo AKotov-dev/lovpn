@@ -259,7 +259,7 @@ object MainForm: TMainForm
     AnchorSideBottom.Side = asrBottom
     Left = 325
     Height = 37
-    Hint = 'Select directory to download...'
+    Hint = 'Specify the download directory...'
     Top = 8
     Width = 40
     Anchors = [akTop, akRight, akBottom]

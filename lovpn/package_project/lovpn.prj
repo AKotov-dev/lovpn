@@ -2,7 +2,7 @@
 name=lovpn
 
 [VERSION]
-version=0.1
+version=0.2
 
 [RELEASE]
 release=0.mrx9
@@ -67,6 +67,11 @@ devtool=Lazarus
 toolversion=2.2.4
 
 [INFO]
-0=v0.1
-1=+ Initial release
-2=+ Mageia-8/9 and Debian packages
+0=v0.2
+1=+ Improved configuration download script
+2=+ Linux-style configuration handling
+3=+ Mageia-8/9 and Debian packages
+4=
+5=v0.1
+6=+ Initial release
+7=+ Mageia-8/9 and Debian packages
