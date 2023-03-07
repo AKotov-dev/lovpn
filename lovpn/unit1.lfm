@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 288
+  Left = 287
   Height = 363
-  Top = 125
+  Top = 124
   Width = 590
   ActiveControl = ProgressBar1
   Caption = 'MainForm'

@@ -64,7 +64,7 @@ begin
   try
     ExProcess.Executable := 'bash';
     ExProcess.Parameters.Add('-c');
-    ExProcess.Parameters.Add('rm -f ./{start,ovpn.list}; killall curl');
+    ExProcess.Parameters.Add('killall curl; rm -f ./{start,ovpn.list}; killall curl');
     //  ExProcess.Options := ExProcess.Options + [poWaitOnExit];
     ExProcess.Execute;
   finally

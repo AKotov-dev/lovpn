@@ -5,9 +5,9 @@ program lovpn;
 uses
  {$IFDEF UNIX}
   cthreads,
-    {$ENDIF} {$IFDEF HASAMIGA}
+           {$ENDIF} {$IFDEF HASAMIGA}
   athreads,
-    {$ENDIF}
+           {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms,
   Unit1,
@@ -17,8 +17,8 @@ uses
 
 begin
   RequireDerivedFormResource := True;
-  Application.Title:='Lovpn-v0.3';
-  Application.Scaled:=True;
+  Application.Title := 'Lovpn-v0.3';
+  Application.Scaled := True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;

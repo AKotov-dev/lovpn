@@ -47,7 +47,7 @@ begin
     ExProcess.Parameters.Add('-c');
 
     ExProcess.Parameters.Add(
-      //Источник_1
+      //source_1
       'rm -f ./*; > ./start; sleep 1; if [[ $(curl --connect-timeout 3 -s ' +
       '$(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8vZnJlZXZwbl9vcGVudnBuLnBocD9sYW5ndWFnZT1lbg==" | base64 -d)) ]]; then '
       + ' s=$(curl -s $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8vZnJlZXZwbl9vcGVudnBuLnBocD9sYW5ndWFnZT1lbg==" | '
@@ -55,7 +55,7 @@ begin
       + '&& break || curl -O $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8=" | base64 -d)$i; done; '
       + '[[ $(find . -name "*.ovpn") ]] || exit 0; for f in ./*.ovpn; do sed -i "/Downloaded\|^$/d" $f; done; '
       + 'for f in ./*.ovpn; do sed -i $"s/[^[:print:]\t]//g" $f; done; fi; echo ""; [ ! -f ./start ] && exit 0; '
-      //Источник_2
+      //source_2
       + 'u0=$(echo "aHR0cDovL3d3dy52cG5nYXRlLm5ldC9hcGkvaXBob25lLw==" | base64 -d); '
       + 'u1=$(echo "aHR0cDovLzIwMi41LjIyMS42Njo2MDI3OS9hcGkvaXBob25lLw==" | base64 -d); '
       + 'u2=$(echo "aHR0cDovLzIwMi41LjIyMS4xMDY6NTk3MTAvYXBpL2lwaG9uZS8=" | base64 -d); '
@@ -68,8 +68,8 @@ begin
       SAdditionalSearch + '"; ' +
       'if [ -f ./start ] && [[ $(curl --connect-timeout 3 -s $i) ]]; then curl $i | cut -f15 -d"," | tail -n+3 | '
       + 'base64 -di | col -b | sed "/^#\|^$/d" > ./ovpn.list; break; fi; [ ! -f ./start ] && exit 0; '
-      + 'done; c=0; while read i; do if [ "$i" != "</key>" ]; then echo $i >> ./config_$c.ovpn; else echo "</key>" >> '
-      + './config_$c.ovpn; c=$(expr $c + 1); fi; done < ./ovpn.list; rm -f ./{start,ovpn.list}; exit 0');
+      + 'done; c=0; while read i; do if [ "$i" != "</key>" ]; then echo $i >> ./0_lovpn_$c.ovpn; else echo "</key>" >> '
+      + './0_lovpn_$c.ovpn; c=$(expr $c + 1); fi; done < ./ovpn.list; rm -f ./{start,ovpn.list}; exit 0');
 
     ExProcess.Execute;
 

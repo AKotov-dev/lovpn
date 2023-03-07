@@ -68,8 +68,8 @@ begin
       SAdditionalSearch + '"; ' +
       'if [ -f ./start ] && [[ $(curl --connect-timeout 3 -s $i) ]]; then curl $i | cut -f15 -d"," | tail -n+3 | '
       + 'base64 -di | col -b | sed "/^#\|^$/d" > ./ovpn.list; break; fi; [ ! -f ./start ] && exit 0; '
-      + 'done; c=0; while read i; do if [ "$i" != "</key>" ]; then echo $i >> ./config_$c.ovpn; else echo "</key>" >> '
-      + './config_$c.ovpn; c=$(expr $c + 1); fi; done < ./ovpn.list; rm -f ./{start,ovpn.list}; exit 0');
+      + 'done; c=0; while read i; do if [ "$i" != "</key>" ]; then echo $i >> ./0_config_$c.ovpn; else echo "</key>" >> '
+      + './0_config_$c.ovpn; c=$(expr $c + 1); fi; done < ./ovpn.list; rm -f ./{start,ovpn.list}; exit 0');
 
     ExProcess.Execute;
 
