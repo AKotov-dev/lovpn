@@ -25,6 +25,10 @@ msgstr ""
 msgid "Stop"
 msgstr ""
 
+#: unit1.sadditionalsearch
+msgid "Search for additional sources, wait..."
+msgstr ""
+
 #: unit1.sdirectorynotexists
 msgid "Download directory not found!"
 msgstr ""

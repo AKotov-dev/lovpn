@@ -54,7 +54,7 @@ begin
       + 'base64 -d) | grep href= | cut -d"\"" -f6 | grep "^/"); for i in ${s[@]}; do [ ! -f ./start ] '
       + '&& break || curl -O $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8=" | base64 -d)$i; done; '
       + '[[ $(find . -name "*.ovpn") ]] || exit 0; for f in ./*.ovpn; do sed -i "/Downloaded\|^$/d" $f; done; '
-      + 'for f in ./*.ovpn; do sed -i $"s/[^[:print:]\t]//g" $f; done; fi; [ ! -f ./start ] && exit 0; '
+      + 'for f in ./*.ovpn; do sed -i $"s/[^[:print:]\t]//g" $f; done; fi; echo ""; [ ! -f ./start ] && exit 0; '
       //Источник_2
       + 'u0=$(echo "aHR0cDovL3d3dy52cG5nYXRlLm5ldC9hcGkvaXBob25lLw==" | base64 -d); '
       + 'u1=$(echo "aHR0cDovLzIwMi41LjIyMS42Njo2MDI3OS9hcGkvaXBob25lLw==" | base64 -d); '
@@ -64,8 +64,9 @@ begin
       + 'u5=$(echo "aHR0cDovLzEwOS4xMTEuMjQzLjIwNjoxNzU3OS9hcGkvaXBob25lLw==" | base64 -d); '
       + 'u6=$(echo "aHR0cDovLzEwMy4yMDEuMTI5LjIyNjoxNDY4NC9hcGkvaXBob25lLw==" | base64 -d); '
       + 'u7=$(echo "aHR0cHM6Ly9kb3dubG9hZC52cG5nYXRlLmpwL2FwaS9pcGhvbmUv" | base64 -d); '
-      + 'for i in $u0 $u1 $u2 $u3 $u4 $u5 $u6 $u7; do echo -e "\nSearch for additional sources, wait..."; '
-      + 'if [ -f ./start ] && [[ $(curl --connect-timeout 3 -s $i) ]]; then curl $i | cut -f15 -d"," | tail -n+3 | '
+      + 'for i in $u0 $u1 $u2 $u3 $u4 $u5 $u6 $u7; do echo "' +
+      SAdditionalSearch + '"; ' +
+      'if [ -f ./start ] && [[ $(curl --connect-timeout 3 -s $i) ]]; then curl $i | cut -f15 -d"," | tail -n+3 | '
       + 'base64 -di | col -b | sed "/^#\|^$/d" > ./ovpn.list; break; fi; [ ! -f ./start ] && exit 0; '
       + 'done; c=0; while read i; do if [ "$i" != "</key>" ]; then echo $i >> ./config_$c.ovpn; else echo "</key>" >> '
       + './config_$c.ovpn; c=$(expr $c + 1); fi; done < ./ovpn.list; rm -f ./{start,ovpn.list}; exit 0');

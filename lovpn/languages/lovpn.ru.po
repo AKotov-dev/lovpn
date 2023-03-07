@@ -36,6 +36,10 @@ msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2023   URL: https:
 msgid "Stop"
 msgstr "Стоп"
 
+#: unit1.sadditionalsearch
+msgid "Search for additional sources, wait..."
+msgstr "Поиск дополнительных источников, ждите..."
+
 #: unit1.sdirectorynotexists
 msgid "Download directory not found!"
 msgstr "Каталог загрузки не найден!"

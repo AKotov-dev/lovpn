@@ -39,6 +39,7 @@ type
 resourcestring
   SDirectoryNotExists = 'Download directory not found!';
   SLoadingConfig = 'Loading *.ovpn configurations. Please, wait (~30-60 sec)...';
+  SAdditionalSearch = 'Search for additional sources, wait...';
   SDownloadCompleted = 'Download completed';
 
 
