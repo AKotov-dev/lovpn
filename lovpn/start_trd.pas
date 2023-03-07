@@ -43,16 +43,32 @@ begin
     ExProcess := TProcess.Create(nil);
 
     ExProcess.Executable := 'bash';
+    ExProcess.Options := [poUsePipes, poStderrToOutPut];
     ExProcess.Parameters.Add('-c');
 
     ExProcess.Parameters.Add(
-      '> ./start; s=$(curl -s $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8vZnJlZXZwbl9vcGVudnBuLnBocD9sYW5ndWFnZT1lbg==" | '
-      + 'base64 -d) | grep href= | cut -d"\"" -f6 | grep "^/"); rm -f ./*.ovpn; for i in ${s[@]}; do [ ! -f ./start ] '
-      + '&& break || curl -O $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8=" | base64 -d)$i; done; rm -f ./start; '
+      //Источник_1
+      'rm -f ./*; > ./start; sleep 1; if [[ $(curl --connect-timeout 3 -s ' +
+      '$(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8vZnJlZXZwbl9vcGVudnBuLnBocD9sYW5ndWFnZT1lbg==" | base64 -d)) ]]; then '
+      + ' s=$(curl -s $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8vZnJlZXZwbl9vcGVudnBuLnBocD9sYW5ndWFnZT1lbg==" | '
+      + 'base64 -d) | grep href= | cut -d"\"" -f6 | grep "^/"); for i in ${s[@]}; do [ ! -f ./start ] '
+      + '&& break || curl -O $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8=" | base64 -d)$i; done; '
       + '[[ $(find . -name "*.ovpn") ]] || exit 0; for f in ./*.ovpn; do sed -i "/Downloaded\|^$/d" $f; done; '
-      + 'for f in ./*.ovpn; do sed -i $"s/[^[:print:]\t]//g" $f; done');
-
-    ExProcess.Options := [poUsePipes, poStderrToOutPut];
+      + 'for f in ./*.ovpn; do sed -i $"s/[^[:print:]\t]//g" $f; done; fi; [ ! -f ./start ] && exit 0; '
+      //Источник_2
+      + 'u0=$(echo "aHR0cDovL3d3dy52cG5nYXRlLm5ldC9hcGkvaXBob25lLw==" | base64 -d); '
+      + 'u1=$(echo "aHR0cDovLzIwMi41LjIyMS42Njo2MDI3OS9hcGkvaXBob25lLw==" | base64 -d); '
+      + 'u2=$(echo "aHR0cDovLzIwMi41LjIyMS4xMDY6NTk3MTAvYXBpL2lwaG9uZS8=" | base64 -d); '
+      + 'u3=$(echo "aHR0cDovLzE1MC45NS4yOS4zMDoyMzM1Ny9hcGkvaXBob25lLw==" | base64 -d); '
+      + 'u4=$(echo "aHR0cDovLzIxOC4xNTcuMjI2LjE2NDoyMDA2MC9hcGkvaXBob25lLw==" | base64 -d); '
+      + 'u5=$(echo "aHR0cDovLzEwOS4xMTEuMjQzLjIwNjoxNzU3OS9hcGkvaXBob25lLw==" | base64 -d); '
+      + 'u6=$(echo "aHR0cDovLzEwMy4yMDEuMTI5LjIyNjoxNDY4NC9hcGkvaXBob25lLw==" | base64 -d); '
+      + 'u7=$(echo "aHR0cHM6Ly9kb3dubG9hZC52cG5nYXRlLmpwL2FwaS9pcGhvbmUv" | base64 -d); '
+      + 'for i in $u0 $u1 $u2 $u3 $u4 $u5 $u6 $u7; do echo -e "\nSearch for additional sources, wait..."; '
+      + 'if [ -f ./start ] && [[ $(curl --connect-timeout 3 -s $i) ]]; then curl $i | cut -f15 -d"," | tail -n+3 | '
+      + 'base64 -di | col -b | sed "/^#\|^$/d" > ./ovpn.list; break; fi; [ ! -f ./start ] && exit 0; '
+      + 'done; c=0; while read i; do if [ "$i" != "</key>" ]; then echo $i >> ./config_$c.ovpn; else echo "</key>" >> '
+      + './config_$c.ovpn; c=$(expr $c + 1); fi; done < ./ovpn.list; rm -f ./{start,ovpn.list}; exit 0');
 
     ExProcess.Execute;
 
