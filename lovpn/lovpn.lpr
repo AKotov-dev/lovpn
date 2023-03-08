@@ -17,8 +17,8 @@ uses
 
 begin
   RequireDerivedFormResource := True;
-  Application.Title := 'Lovpn-v0.3';
-  Application.Scaled := True;
+  Application.Title:='Lovpn-v0.4';
+  Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;

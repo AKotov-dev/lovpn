@@ -8,7 +8,7 @@ uses
   Classes, Process, SysUtils, ComCtrls, Forms;
 
 type
-  StartRestore = class(TThread)
+  StartDownload = class(TThread)
   private
 
     { Private declarations }
@@ -30,7 +30,7 @@ uses Unit1;
 
 { TRD }
 
-procedure StartRestore.Execute;
+procedure StartDownload.Execute;
 var
   ExProcess: TProcess;
 begin
@@ -57,19 +57,19 @@ begin
       + 'for f in ./*.ovpn; do sed -i $"s/[^[:print:]\t]//g" $f; done; fi; echo ""; [ ! -f ./start ] && exit 0; '
       //source_2
       + 'u0=$(echo "aHR0cDovL3d3dy52cG5nYXRlLm5ldC9hcGkvaXBob25lLw==" | base64 -d); '
-      + 'u1=$(echo "aHR0cDovLzIwMi41LjIyMS42Njo2MDI3OS9hcGkvaXBob25lLw==" | base64 -d); '
-      + 'u2=$(echo "aHR0cDovLzIwMi41LjIyMS4xMDY6NTk3MTAvYXBpL2lwaG9uZS8=" | base64 -d); '
-      + 'u3=$(echo "aHR0cDovLzE1MC45NS4yOS4zMDoyMzM1Ny9hcGkvaXBob25lLw==" | base64 -d); '
-      + 'u4=$(echo "aHR0cDovLzIxOC4xNTcuMjI2LjE2NDoyMDA2MC9hcGkvaXBob25lLw==" | base64 -d); '
-      + 'u5=$(echo "aHR0cDovLzEwOS4xMTEuMjQzLjIwNjoxNzU3OS9hcGkvaXBob25lLw==" | base64 -d); '
-      + 'u6=$(echo "aHR0cDovLzEwMy4yMDEuMTI5LjIyNjoxNDY4NC9hcGkvaXBob25lLw==" | base64 -d); '
-      + 'u7=$(echo "aHR0cHM6Ly9kb3dubG9hZC52cG5nYXRlLmpwL2FwaS9pcGhvbmUv" | base64 -d); '
+      + 'u1=$(echo "aHR0cDovLzIwMi41LjIyMS4xMDY6NTk3MTAvYXBpL2lwaG9uZS8=" | base64 -d); '
+      + 'u2=$(echo "aHR0cHM6Ly9kb3dubG9hZC52cG5nYXRlLmpwL2FwaS9pcGhvbmUv" | base64 -d); '
+      + 'u3=$(echo "aHR0cDovLzIwMi41LjIyMS42Njo2MDI3OS9hcGkvaXBob25lLw==" | base64 -d); '
+      + 'u4=$(echo "aHR0cDovLzE1MC45NS4yOS4zMDoyMzM1Ny9hcGkvaXBob25lLw==" | base64 -d); '
+      + 'u5=$(echo "aHR0cDovLzIxOC4xNTcuMjI2LjE2NDoyMDA2MC9hcGkvaXBob25lLw==" | base64 -d); '
+      + 'u6=$(echo "aHR0cDovLzEwOS4xMTEuMjQzLjIwNjoxNzU3OS9hcGkvaXBob25lLw==" | base64 -d); '
+      + 'u7=$(echo "aHR0cDovLzEwMy4yMDEuMTI5LjIyNjoxNDY4NC9hcGkvaXBob25lLw==" | base64 -d); '
       + 'for i in $u0 $u1 $u2 $u3 $u4 $u5 $u6 $u7; do echo "' +
       SAdditionalSearch + '"; ' +
       'if [ -f ./start ] && [[ $(curl --connect-timeout 3 -s $i) ]]; then curl $i | cut -f15 -d"," | tail -n+3 | '
       + 'base64 -di | col -b | sed "/^#\|^$/d" > ./ovpn.list; break; fi; [ ! -f ./start ] && exit 0; '
-      + 'done; c=0; while read i; do if [ "$i" != "</key>" ]; then echo $i >> ./0_lovpn_$c.ovpn; else echo "</key>" >> '
-      + './0_lovpn_$c.ovpn; c=$(expr $c + 1); fi; done < ./ovpn.list; rm -f ./{start,ovpn.list}; exit 0');
+      + 'done; c=0; while read i; do if [ "$i" != "</key>" ]; then echo $i >> ./0_config_$c.ovpn; else echo "</key>" >> '
+      + './0_config_$c.ovpn; c=$(expr $c + 1); fi; done < ./ovpn.list; rm -f ./{start,ovpn.list}; exit 0');
 
     ExProcess.Execute;
 
@@ -93,7 +93,7 @@ end;
 { БЛОК ОТОБРАЖЕНИЯ ЛОГА }
 
 //Старт
-procedure StartRestore.StartProgress;
+procedure StartDownload.StartProgress;
 begin
   with MainForm do
   begin
@@ -108,7 +108,7 @@ begin
 end;
 
 //Стоп
-procedure StartRestore.StopProgress;
+procedure StartDownload.StopProgress;
 begin
   with MainForm do
   begin
@@ -123,7 +123,7 @@ begin
 end;
 
 //Вывод лога
-procedure StartRestore.ShowLog;
+procedure StartDownload.ShowLog;
 var
   i: integer;
 begin

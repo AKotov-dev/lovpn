@@ -2,5 +2,6 @@
 {"hash":217339489,"name":"unit1.sdirectorynotexists","sourcebytes":[68,111,119,110,108,111,97,100,32,100,105,114,101,99,116,111,114,121,32,110,111,116,32,102,111,117,110,100,33],"value":"Download directory not found!"},
 {"hash":159002430,"name":"unit1.sloadingconfig","sourcebytes":[76,111,97,100,105,110,103,32,42,46,111,118,112,110,32,99,111,110,102,105,103,117,114,97,116,105,111,110,115,46,32,80,108,101,97,115,101,44,32,119,97,105,116,32,40,126,51,48,45,54,48,32,115,101,99,41,46,46,46],"value":"Loading *.ovpn configurations. Please, wait (~30-60 sec)..."},
 {"hash":33404846,"name":"unit1.sadditionalsearch","sourcebytes":[83,101,97,114,99,104,32,102,111,114,32,97,100,100,105,116,105,111,110,97,108,32,115,111,117,114,99,101,115,44,32,119,97,105,116,46,46,46],"value":"Search for additional sources, wait..."},
-{"hash":95569860,"name":"unit1.sdownloadcompleted","sourcebytes":[68,111,119,110,108,111,97,100,32,99,111,109,112,108,101,116,101,100],"value":"Download completed"}
+{"hash":95569860,"name":"unit1.sdownloadcompleted","sourcebytes":[68,111,119,110,108,111,97,100,32,99,111,109,112,108,101,116,101,100],"value":"Download completed"},
+{"hash":52217130,"name":"unit1.sdownloaded","sourcebytes":[68,111,119,110,108,111,97,100,101,100,58],"value":"Downloaded:"}
 ]}

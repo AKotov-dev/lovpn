@@ -48,6 +48,10 @@ msgstr "Каталог загрузки не найден!"
 msgid "Download completed"
 msgstr "Загрузка завершена"
 
+#: unit1.sdownloaded
+msgid "Downloaded:"
+msgstr "Загружено:"
+
 #: unit1.sloadingconfig
 msgid "Loading *.ovpn configurations. Please, wait (~30-60 sec)..."
 msgstr "Загрузка конфигураций *.ovpn. Пожалуйста, ждите (~30-60 сек)..."

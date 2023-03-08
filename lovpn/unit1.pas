@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Buttons,
-  StdCtrls, ComCtrls, IniPropStorage, Process, DefaultTranslator;
+  StdCtrls, ComCtrls, IniPropStorage, Process, DefaultTranslator, ExtCtrls;
 
 type
 
@@ -22,6 +22,7 @@ type
     StartBtn: TSpeedButton;
     StaticText1: TStaticText;
     StopBtn: TSpeedButton;
+    Timer1: TTimer;
     procedure DirBtnClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -29,6 +30,7 @@ type
     procedure StartBtnClick(Sender: TObject);
     procedure KillAll;
     procedure StopBtnClick(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
 
   private
 
@@ -41,7 +43,7 @@ resourcestring
   SLoadingConfig = 'Loading *.ovpn configurations. Please, wait (~30-60 sec)...';
   SAdditionalSearch = 'Search for additional sources, wait...';
   SDownloadCompleted = 'Download completed';
-
+  SDownloaded = 'Downloaded:';
 
 var
   MainForm: TMainForm;
@@ -53,6 +55,22 @@ uses start_trd;
 {$R *.lfm}
 
 { TMainForm }
+
+//Количество файлов в папке загрузки
+function GetFileCount(Directory: string): integer;
+var
+  fs: TSearchRec;
+begin
+  try
+    Result := 0;
+    if FindFirst(Directory + '/*.ovpn', faAnyFile, fs) = 0 then
+      repeat
+        Inc(Result);
+      until FindNext(fs) <> 0;
+  finally
+    SysUtils.FindClose(fs);
+  end;
+end;
 
 //Экстренный останов
 procedure TMainForm.KillAll;
@@ -78,6 +96,17 @@ begin
   KillAll;
 end;
 
+//Количество загруженных конфигураций
+procedure TMainForm.Timer1Timer(Sender: TObject);
+var
+  s: string = '0';
+begin
+  if DirectoryExists(Edit1.Text) then
+    s := IntToStr(GetFileCount(Edit1.Text));
+
+  MainForm.Caption := Concat(Application.Title, ' [', SDownloaded, ' ', s, ']');
+end;
+
 //Старт
 procedure TMainForm.StartBtnClick(Sender: TObject);
 var
@@ -93,7 +122,7 @@ begin
   SetCurrentDir(Edit1.Text);
 
   //Запускаем скачивание
-  FStartLoad := StartRestore.Create(False);
+  FStartLoad := StartDownload.Create(False);
   FStartLoad.Priority := tpHighest;
 end;
 
@@ -121,7 +150,10 @@ end;
 procedure TMainForm.DirBtnClick(Sender: TObject);
 begin
   if SelectDirectoryDialog1.Execute then
+  begin
     Edit1.Text := SelectDirectoryDialog1.FileName;
+    Edit1.Repaint;
+  end;
 end;
 
 end.

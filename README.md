@@ -1,5 +1,5 @@
 # lovpn
-`Lovpn` - is a simple loader of free password-free OpenVPN configurations (*.ovpn) from open sources.
+`Lovpn` - is a simple loader of free password-free OpenVPN configurations (*.ovpn) from open sources. Don't forget to open the `iptables` ports.
 
 **Dependencies:** curl
 

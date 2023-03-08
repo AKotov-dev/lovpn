@@ -37,6 +37,10 @@ msgstr ""
 msgid "Download completed"
 msgstr ""
 
+#: unit1.sdownloaded
+msgid "Downloaded:"
+msgstr ""
+
 #: unit1.sloadingconfig
 msgid "Loading *.ovpn configurations. Please, wait (~30-60 sec)..."
 msgstr ""

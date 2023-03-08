@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 288
+  Left = 287
   Height = 363
-  Top = 125
+  Top = 124
   Width = 590
   ActiveControl = ProgressBar1
   Caption = 'MainForm'
@@ -271,12 +271,17 @@ object MainForm: TMainForm
   end
   object SelectDirectoryDialog1: TSelectDirectoryDialog
     InitialDir = '~'
-    Left = 408
-    Top = 88
+    Left = 264
+    Top = 80
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>
-    Left = 264
-    Top = 88
+    Left = 136
+    Top = 80
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 32
+    Top = 80
   end
 end
