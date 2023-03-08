@@ -22,7 +22,7 @@ object MainForm: TMainForm
     Height = 37
     Top = 8
     Width = 100
-    Anchors = [akTop, akRight, akBottom]
+    Anchors = [akTop, akRight]
     BorderSpacing.Right = 5
     Caption = 'Start'
     Glyph.Data = {
@@ -122,7 +122,7 @@ object MainForm: TMainForm
   end
   object ProgressBar1: TProgressBar
     AnchorSideLeft.Control = LogMemo
-    AnchorSideTop.Control = Edit1
+    AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = LogMemo
     AnchorSideRight.Side = asrBottom
@@ -137,7 +137,7 @@ object MainForm: TMainForm
   object StopBtn: TSpeedButton
     AnchorSideTop.Control = Edit1
     AnchorSideRight.Control = StartBtn
-    AnchorSideBottom.Control = Edit1
+    AnchorSideBottom.Control = StartBtn
     AnchorSideBottom.Side = asrBottom
     Left = 385
     Height = 37

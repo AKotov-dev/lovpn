@@ -138,6 +138,7 @@ end;
 procedure TMainForm.FormShow(Sender: TObject);
 begin
   IniPropStorage1.Restore;
+  DirBtn.Width := Edit1.Height;
 end;
 
 //Завершение при закрытии
