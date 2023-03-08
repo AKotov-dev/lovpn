@@ -48,7 +48,7 @@ begin
 
     ExProcess.Parameters.Add(
       //source_1
-      'rm -f ./*; > ./start; sleep 1; if [[ $(curl --max-time 60 -s ' +
+      'rm -f ./*.ovpn; > ./start; sleep 1; if [[ $(curl --max-time 60 -s ' +
       '$(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8vZnJlZXZwbl9vcGVudnBuLnBocD9sYW5ndWFnZT1lbg==" | base64 -d)) ]]; then '
       + ' s=$(curl -s $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8vZnJlZXZwbl9vcGVudnBuLnBocD9sYW5ndWFnZT1lbg==" | '
       + 'base64 -d) | grep href= | cut -d"\"" -f6 | grep "^/"); for i in ${s[@]}; do [ ! -f ./start ] '

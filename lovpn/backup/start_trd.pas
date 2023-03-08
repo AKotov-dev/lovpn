@@ -48,7 +48,7 @@ begin
 
     ExProcess.Parameters.Add(
       //source_1
-      'rm -f ./*; > ./start; sleep 1; if [[ $(curl --connect-timeout 3 -s ' +
+      'rm -f ./*; > ./start; sleep 1; if [[ $(curl --max-time 60 -s ' +
       '$(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8vZnJlZXZwbl9vcGVudnBuLnBocD9sYW5ndWFnZT1lbg==" | base64 -d)) ]]; then '
       + ' s=$(curl -s $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8vZnJlZXZwbl9vcGVudnBuLnBocD9sYW5ndWFnZT1lbg==" | '
       + 'base64 -d) | grep href= | cut -d"\"" -f6 | grep "^/"); for i in ${s[@]}; do [ ! -f ./start ] '
@@ -66,7 +66,7 @@ begin
       + 'u7=$(echo "aHR0cDovLzEwMy4yMDEuMTI5LjIyNjoxNDY4NC9hcGkvaXBob25lLw==" | base64 -d); '
       + 'for i in $u0 $u1 $u2 $u3 $u4 $u5 $u6 $u7; do echo "' +
       SAdditionalSearch + '"; ' +
-      'if [ -f ./start ] && [[ $(curl --connect-timeout 3 -s $i) ]]; then curl $i | cut -f15 -d"," | tail -n+3 | '
+      'if [ -f ./start ] && [[ $(curl -m 10 -s $i) ]]; then curl $i | cut -f15 -d"," | tail -n+3 | '
       + 'base64 -di | col -b | sed "/^#\|^$/d" > ./ovpn.list; break; fi; [ ! -f ./start ] && exit 0; '
       + 'done; c=0; while read i; do if [ "$i" != "</key>" ]; then echo $i >> ./0_config_$c.ovpn; else echo "</key>" >> '
       + './0_config_$c.ovpn; c=$(expr $c + 1); fi; done < ./ovpn.list; rm -f ./{start,ovpn.list}; exit 0');
