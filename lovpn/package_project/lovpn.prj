@@ -2,7 +2,7 @@
 name=lovpn
 
 [VERSION]
-version=0.4
+version=0.5
 
 [RELEASE]
 release=0.mrx9
@@ -39,9 +39,6 @@ meta=0
 [NOARCH]
 noarch=0
 
-[SIGN]
-sign=0
-
 [DEB]
 deb=1
 
@@ -54,9 +51,6 @@ deb=1
 [URL32]
 url32=https://github.com/AKotov-dev/lovpn
 
-[URL64]
-url64=
-
 [PROGRAMNAME]
 programname=Lovpn
 
@@ -67,20 +61,24 @@ devtool=Lazarus
 toolversion=2.2.4
 
 [INFO]
-0=v0.4
-1=+ Counter of downloaded configurations
-2=+ Improving the prioritization of sources
-3=+ Mageia-8/9 and Debian packages
-4=
-5=v0.3
-6=+ Additional configuration search sources
+0=v0.5
+1=+ Ignoring the first phase of the search if not available
+2=+ Mageia-8/9 and Debian packages
+3=
+4=v0.4
+5=+ Counter of downloaded configurations
+6=+ Improving the prioritization of sources
 7=+ Mageia-8/9 and Debian packages
 8=
-9=v0.2
-10=+ Improved configuration download script
-11=+ Linux-style configuration handling
-12=+ Mageia-8/9 and Debian packages
-13=
-14=v0.1
-15=+ Initial release
+9=v0.3
+10=+ Additional configuration search sources
+11=+ Mageia-8/9 and Debian packages
+12=
+13=v0.2
+14=+ Improved configuration download script
+15=+ Linux-style configuration handling
 16=+ Mageia-8/9 and Debian packages
+17=
+18=v0.1
+19=+ Initial release
+20=+ Mageia-8/9 and Debian packages

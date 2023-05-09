@@ -22,7 +22,7 @@ object MainForm: TMainForm
     Height = 37
     Top = 8
     Width = 100
-    Anchors = [akTop, akRight]
+    Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 5
     Caption = 'Start'
     Glyph.Data = {
@@ -137,7 +137,7 @@ object MainForm: TMainForm
   object StopBtn: TSpeedButton
     AnchorSideTop.Control = Edit1
     AnchorSideRight.Control = StartBtn
-    AnchorSideBottom.Control = StartBtn
+    AnchorSideBottom.Control = Edit1
     AnchorSideBottom.Side = asrBottom
     Left = 385
     Height = 37

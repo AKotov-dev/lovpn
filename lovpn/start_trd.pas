@@ -53,8 +53,8 @@ begin
       + ' s=$(curl -s $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8vZnJlZXZwbl9vcGVudnBuLnBocD9sYW5ndWFnZT1lbg==" | '
       + 'base64 -d) | grep href= | cut -d"\"" -f6 | grep "^/"); for i in ${s[@]}; do [ ! -f ./start ] '
       + '&& break || curl -O $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8=" | base64 -d)$i; done; '
-      + '[[ $(find . -name "*.ovpn") ]] || exit 0; for f in ./*.ovpn; do sed -i "/Downloaded\|^$/d" $f; done; '
-      + 'for f in ./*.ovpn; do sed -i $"s/[^[:print:]\t]//g" $f; done; fi; echo ""; [ ! -f ./start ] && exit 0; '
+      + 'if [[ $(find . -name "*.ovpn") ]]; then for f in ./*.ovpn; do sed -i "/Downloaded\|^$/d" $f; done; '
+      + 'for f in ./*.ovpn; do sed -i $"s/[^[:print:]\t]//g" $f; done; fi; echo ""; [ ! -f ./start ] && exit 0; fi;'
       //source_2
       + 'u0=$(echo "aHR0cDovL3d3dy52cG5nYXRlLm5ldC9hcGkvaXBob25lLw==" | base64 -d); '
       + 'u1=$(echo "aHR0cDovLzIwMi41LjIyMS4xMDY6NTk3MTAvYXBpL2lwaG9uZS8=" | base64 -d); '
