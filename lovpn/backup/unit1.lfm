@@ -1,12 +1,12 @@
 object MainForm: TMainForm
-  Left = 287
-  Height = 363
-  Top = 124
-  Width = 590
+  Left = 293
+  Height = 571
+  Top = 125
+  Width = 793
   ActiveControl = ProgressBar1
   Caption = 'MainForm'
-  ClientHeight = 363
-  ClientWidth = 590
+  ClientHeight = 571
+  ClientWidth = 793
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
@@ -18,11 +18,11 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Edit1
     AnchorSideBottom.Side = asrBottom
-    Left = 485
+    Left = 688
     Height = 37
     Top = 8
     Width = 100
-    Anchors = [akTop, akRight]
+    Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 5
     Caption = 'Start'
     Glyph.Data = {
@@ -108,9 +108,9 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrBottom
     AnchorSideBottom.Control = StaticText1
     Left = 0
-    Height = 280
+    Height = 488
     Top = 63
-    Width = 590
+    Width = 793
     Align = alBottom
     Anchors = [akTop, akLeft, akRight, akBottom]
     Font.Height = -12
@@ -129,7 +129,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 8
     Top = 55
-    Width = 590
+    Width = 793
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 10
     TabOrder = 1
@@ -137,9 +137,9 @@ object MainForm: TMainForm
   object StopBtn: TSpeedButton
     AnchorSideTop.Control = Edit1
     AnchorSideRight.Control = StartBtn
-    AnchorSideBottom.Control = StartBtn
+    AnchorSideBottom.Control = Edit1
     AnchorSideBottom.Side = asrBottom
-    Left = 385
+    Left = 588
     Height = 37
     Top = 8
     Width = 100
@@ -226,8 +226,8 @@ object MainForm: TMainForm
   object StaticText1: TStaticText
     Left = 0
     Height = 20
-    Top = 343
-    Width = 590
+    Top = 551
+    Width = 793
     Align = alBottom
     Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2023   URL: https://linuxforum.ru'
     Color = clDefault
@@ -240,11 +240,12 @@ object MainForm: TMainForm
   end
   object Edit1: TEdit
     AnchorSideLeft.Control = Owner
+    AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = DirBtn
     Left = 5
     Height = 37
     Top = 8
-    Width = 320
+    Width = 523
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     ReadOnly = True
@@ -257,7 +258,7 @@ object MainForm: TMainForm
     AnchorSideRight.Control = StopBtn
     AnchorSideBottom.Control = Edit1
     AnchorSideBottom.Side = asrBottom
-    Left = 325
+    Left = 528
     Height = 37
     Hint = 'Specify the download directory...'
     Top = 8

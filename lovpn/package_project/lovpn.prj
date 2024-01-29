@@ -2,7 +2,7 @@
 name=lovpn
 
 [VERSION]
-version=0.5
+version=0.6
 
 [RELEASE]
 release=0.mrx9
@@ -61,24 +61,29 @@ devtool=Lazarus
 toolversion=2.2.4
 
 [INFO]
-0=v0.5
-1=+ Ignoring the first phase of the search if not available
-2=+ Mageia-8/9 and Debian packages
-3=
-4=v0.4
-5=+ Counter of downloaded configurations
-6=+ Improving the prioritization of sources
+0=v0.6
+1=+ Search algorithm optimization
+2=+ Advanced search for additional sources
+3=+ Mageia-9 and Ubuntu packages
+4=
+5=v0.5
+6=+ Ignoring the first phase of the search if not available
 7=+ Mageia-8/9 and Debian packages
 8=
-9=v0.3
-10=+ Additional configuration search sources
-11=+ Mageia-8/9 and Debian packages
-12=
-13=v0.2
-14=+ Improved configuration download script
-15=+ Linux-style configuration handling
+9=v0.4
+10=+ Counter of downloaded configurations
+11=+ Improving the prioritization of sources
+12=+ Mageia-8/9 and Debian packages
+13=
+14=v0.3
+15=+ Additional configuration search sources
 16=+ Mageia-8/9 and Debian packages
 17=
-18=v0.1
-19=+ Initial release
-20=+ Mageia-8/9 and Debian packages
+18=v0.2
+19=+ Improved configuration download script
+20=+ Linux-style configuration handling
+21=+ Mageia-8/9 and Debian packages
+22=
+23=v0.1
+24=+ Initial release
+25=+ Mageia-8/9 and Debian packages

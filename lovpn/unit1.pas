@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Buttons,
-  StdCtrls, ComCtrls, IniPropStorage, Process, DefaultTranslator, ExtCtrls;
+  StdCtrls, ComCtrls, IniPropStorage, Process, DefaultTranslator, ExtCtrls; //, Types
 
 type
 
@@ -41,7 +41,8 @@ type
 resourcestring
   SDirectoryNotExists = 'Download directory not found!';
   SLoadingConfig = 'Loading *.ovpn configurations. Please, wait (~30-60 sec)...';
-  SAdditionalSearch = 'Search for additional sources, wait...';
+  SAdditionalSearch = 'Search for additional sources, wait (~10-20 sec)...';
+  SAdvancedSearch = 'Advanced search for additional sources, wait (~10-20 sec)...';
   SDownloadCompleted = 'Download completed';
   SDownloaded = 'Downloaded:';
 
@@ -82,7 +83,7 @@ begin
   try
     ExProcess.Executable := 'bash';
     ExProcess.Parameters.Add('-c');
-    ExProcess.Parameters.Add('killall curl; rm -f ./{start,ovpn.list}; killall curl');
+    ExProcess.Parameters.Add('killall curl; rm -f ./start; killall curl');
     //  ExProcess.Options := ExProcess.Options + [poWaitOnExit];
     ExProcess.Execute;
   finally

@@ -47,29 +47,40 @@ begin
     ExProcess.Parameters.Add('-c');
 
     ExProcess.Parameters.Add(
-      //source_1
+      //stage1
       'rm -f ./*.ovpn; > ./start; sleep 1; if [[ $(curl --max-time 60 -s ' +
-      '$(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8vZnJlZXZwbl9vcGVudnBuLnBocD9sYW5ndWFnZT1lbg==" | base64 -d)) ]]; then '
+      '$(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8vZnJlZXZwbl9vcGVudnBuLnBocD9sYW5ndWFnZT1lbg==" | base64 -di)) ]]; then '
       + ' s=$(curl -s $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8vZnJlZXZwbl9vcGVudnBuLnBocD9sYW5ndWFnZT1lbg==" | '
-      + 'base64 -d) | grep href= | cut -d"\"" -f6 | grep "^/"); for i in ${s[@]}; do [ ! -f ./start ] '
+      + 'base64 -di) | grep href= | cut -d"\"" -f6 | grep "^/"); for i in ${s[@]}; do [ ! -f ./start ] '
       + '&& break || curl -O $(echo "aHR0cHM6Ly9pcHNwZWVkLmluZm8=" | base64 -d)$i; done; '
-      + '[[ $(find . -name "*.ovpn") ]] || exit 0; for f in ./*.ovpn; do sed -i "/Downloaded\|^$/d" $f; done; '
-      + 'for f in ./*.ovpn; do sed -i $"s/[^[:print:]\t]//g" $f; done; fi; echo ""; [ ! -f ./start ] && exit 0; '
-      //source_2
-      + 'u0=$(echo "aHR0cDovL3d3dy52cG5nYXRlLm5ldC9hcGkvaXBob25lLw==" | base64 -d); '
-      + 'u1=$(echo "aHR0cDovLzIwMi41LjIyMS4xMDY6NTk3MTAvYXBpL2lwaG9uZS8=" | base64 -d); '
-      + 'u2=$(echo "aHR0cHM6Ly9kb3dubG9hZC52cG5nYXRlLmpwL2FwaS9pcGhvbmUv" | base64 -d); '
-      + 'u3=$(echo "aHR0cDovLzIwMi41LjIyMS42Njo2MDI3OS9hcGkvaXBob25lLw==" | base64 -d); '
-      + 'u4=$(echo "aHR0cDovLzE1MC45NS4yOS4zMDoyMzM1Ny9hcGkvaXBob25lLw==" | base64 -d); '
-      + 'u5=$(echo "aHR0cDovLzIxOC4xNTcuMjI2LjE2NDoyMDA2MC9hcGkvaXBob25lLw==" | base64 -d); '
-      + 'u6=$(echo "aHR0cDovLzEwOS4xMTEuMjQzLjIwNjoxNzU3OS9hcGkvaXBob25lLw==" | base64 -d); '
-      + 'u7=$(echo "aHR0cDovLzEwMy4yMDEuMTI5LjIyNjoxNDY4NC9hcGkvaXBob25lLw==" | base64 -d); '
-      + 'for i in $u0 $u1 $u2 $u3 $u4 $u5 $u6 $u7; do echo "' +
-      SAdditionalSearch + '"; ' +
-      'if [ -f ./start ] && [[ $(curl -m 10 -s $i) ]]; then curl $i | cut -f15 -d"," | tail -n+3 | '
-      + 'base64 -di | col -b | sed "/^#\|^$/d" > ./ovpn.list; break; fi; [ ! -f ./start ] && exit 0; '
-      + 'done; c=0; while read i; do if [ "$i" != "</key>" ]; then echo $i >> ./0_config_$c.ovpn; else echo "</key>" >> '
-      + './0_config_$c.ovpn; c=$(expr $c + 1); fi; done < ./ovpn.list; rm -f ./{start,ovpn.list}; exit 0');
+      + 'if [[ $(find . -name "*.ovpn") ]]; then for f in ./*.ovpn; do sed -i "/Downloaded\|^$/d" $f; done; '
+      + 'for f in ./*.ovpn; do sed -i $"s/[^[:print:]\t]//g" $f; done; fi; echo ""; [ ! -f ./start ] && exit 0; fi;'
+
+      //stage2_(2)
+      + 'u0=$(echo "aHR0cDovL3d3dy52cG5nYXRlLm5ldC9hcGkvaXBob25lLw==" | base64 -di); '
+      + 'u1=$(echo "aHR0cHM6Ly9kb3dubG9hZC52cG5nYXRlLmpwL2FwaS9pcGhvbmUv" | base64 -di); '
+      + 'for u in $u0 $u1; do '
+//      + 'if [[ $(find . -name "*.ovpn") ]]; then rm -f ./start; exit 0; fi; '
+      + 'echo -e "\n' + SAdditionalSearch + '"; '
+      + 'if [ -f ./start ] && [[ $(curl --max-time 10 -s $u) ]]; then '
+      + 'array=$(curl $u | awk -F ' + '''' + ',' + '''' + ' ' + '''' + '{print $NF}' + '''' + ' | grep IyM); '
+      + 'for i in $array; do '
+      + 'c=$(expr $c + 1); '
+      + 'echo $i | base64 -di > ./stage2_config_$c.ovpn; '
+      + 'done; '
+      + 'fi; '
+      + 'done; '
+
+      //stage3_advanced (duplicates stage_2_(2) if it is not available)
+//      + 'if [[ $(find . -name "*.ovpn") ]]; then rm -f ./start; exit 0; fi; '
+      + 'echo -e "\n' + SAdvancedSearch + '"; ' +
+      'advanced=$(echo aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2ZkY2lhYmR1bC9WcG5nYXRlLVN'
+      + 'jcmFwZXItQVBJL21haW4vanNvbi9kYXRhLmpzb24= | base64 -di); ' +
+      'if [ -f ./start ] && [[ $(curl -m 10 -s $advanced) ]]; then ' +
+      'array=$(curl $advanced | grep openvpn_configdata_base64 | cut -f2 -d":"); ' +
+      'for i in $array; do c=$(expr $c + 1); echo $i | sed ' + '''' +
+      's/\\r//' + '''' + ' | base64 -di | col -b > advanced_$c.ovpn; done; fi; ' +
+      'rm -f ./start; exit 0');
 
     ExProcess.Execute;
 

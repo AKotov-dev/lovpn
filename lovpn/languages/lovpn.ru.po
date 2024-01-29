@@ -37,8 +37,12 @@ msgid "Stop"
 msgstr "Стоп"
 
 #: unit1.sadditionalsearch
-msgid "Search for additional sources, wait..."
-msgstr "Поиск дополнительных источников, ждите..."
+msgid "Search for additional sources, wait (~10-20 sec)..."
+msgstr "Поиск дополнительных источников, ждите (~10-15 сек)..."
+
+#: unit1.sadvancedsearch
+msgid "Advanced search for additional sources, wait (~10-20 sec)..."
+msgstr "Расширенный поиск дополнительных источников, ждите (~10-15 сек)..."
 
 #: unit1.sdirectorynotexists
 msgid "Download directory not found!"

@@ -26,7 +26,11 @@ msgid "Stop"
 msgstr ""
 
 #: unit1.sadditionalsearch
-msgid "Search for additional sources, wait..."
+msgid "Search for additional sources, wait (~10-20 sec)..."
+msgstr ""
+
+#: unit1.sadvancedsearch
+msgid "Advanced search for additional sources, wait (~10-20 sec)..."
 msgstr ""
 
 #: unit1.sdirectorynotexists
